@@ -1,0 +1,11 @@
+<form #doneCheckbox="ngForm">
+    <label class="checkbox-container">
+        <input
+            type="checkbox"
+            [(ngModel)]="done"
+            (ngModelChange)="toggleDone($event)"
+            name="done"
+        />
+        <span class="checkmark"></span>
+    </label>
+</form>

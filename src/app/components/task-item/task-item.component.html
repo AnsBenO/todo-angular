@@ -1,0 +1,14 @@
+<div *ngIf="!isDeleted" class="task" [ngClass]="{'completed': task.done}">
+    <app-checkbox [(done)]="task.done" (doneChange)="updateTask()" />
+    <form *ngIf="editMode else taskTitle" #editForm="ngForm" (submit)="setEditMode(false)" class="editForm">
+        <input type="text" class="editInput" (blur)="setEditMode(false)" [(ngModel)]="task.title"
+            [ngModelOptions]="{ standalone: true }" autocomplete="off" (ngModelChange)="updateTask()" />
+    </form>
+    <ng-template #taskTitle>
+        <h3 (click)="setEditMode(true)">{{task.title}}</h3>
+    </ng-template>
+    <button class="delete" (click)="onDelete(task.id)">
+        <fa-icon [icon]="xMark"></fa-icon>
+    </button>
+
+</div>

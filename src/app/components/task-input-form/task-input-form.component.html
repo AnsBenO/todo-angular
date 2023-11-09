@@ -1,0 +1,16 @@
+<form
+    (submit)="handleSubmit(taskForm.value.taskInput)"
+    class="taskInputForm"
+    #taskForm="ngForm"
+>
+    <button type="submit" class="addBtn">+</button>
+    <input
+        class="taskInput"
+        type="text"
+        name="taskInput"
+        id="taskInput"
+        ngModel
+        placeholder="Enter task name"
+        autoComplete="off"
+    />
+</form>
