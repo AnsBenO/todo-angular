@@ -29,7 +29,6 @@ export class TaskItemComponent implements OnInit {
         this.store.dispatch(
             taskActions.updateTask({ updatedTask: updatedTask })
         );
-        console.log({ updatedTask: updatedTask });
         this.editMode = false;
     }
     onDelete(id: number) {
