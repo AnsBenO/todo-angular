@@ -11,6 +11,7 @@ import { CheckboxComponent } from "./components/checkbox/checkbox.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { StoreModule } from "@ngrx/store";
 import { taskReducer } from "./store/reducers/task.reducer";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
     declarations: [
@@ -26,6 +27,10 @@ import { taskReducer } from "./store/reducers/task.reducer";
         FormsModule,
         FontAwesomeModule,
         StoreModule.forRoot({ "tasks": taskReducer }),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last 25 states
+            logOnly: true, // Restrict extension to log-only mode
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent],
