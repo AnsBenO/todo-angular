@@ -9,19 +9,29 @@
 }
 
 :root {
-    --item-bg: #0c0c0f;
-    --item-hover: #121216;
-    --item-color: #aaa;
-    --accent-color: #007ca9;
-    --item-bg-lighter: #201f28;
+    --item-bg: #d5d5d5;
+    /* Light gray background */
+    --item-hover: #cacaca;
+    /* Slightly darker background on hover */
+    --item-color: #333;
+    /* Dark text color */
+    --accent-color: rgb(244, 108, 59);
+    /* Accent color for emphasis */
+    --item-bg-lighter: #dcdcdc;
+    /* Lighter background */
+    --container-bg: #f0f0f0;
+    /* Slightly off-white background for the container */
+    --bg: #ededed;
+    /* Light gray background for the overall page */
 }
+
 
 :root {
     line-height: 1.5;
     color-scheme: dark;
 
     color: rgba(255, 255, 255, 0.87);
-    background-color: #121213;
+    background-color: var(--bg);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;

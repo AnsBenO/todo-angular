@@ -6,9 +6,11 @@ import { TaskInputFormComponent } from "./components/task-input-form/task-input-
 import { HeaderComponent } from "./components/header/header.component";
 import { TasksListComponent } from "./components/tasks-list/tasks-list.component";
 import { FormsModule } from "@angular/forms";
-import { TaskItemComponent } from './components/task-item/task-item.component';
-import { CheckboxComponent } from './components/checkbox/checkbox.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TaskItemComponent } from "./components/task-item/task-item.component";
+import { CheckboxComponent } from "./components/checkbox/checkbox.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { StoreModule } from "@ngrx/store";
+import { taskReducer } from "./store/reducers/task.reducer";
 
 @NgModule({
     declarations: [
@@ -19,7 +21,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         TaskItemComponent,
         CheckboxComponent,
     ],
-    imports: [BrowserModule, FormsModule, FontAwesomeModule],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        FontAwesomeModule,
+        StoreModule.forRoot({ "tasks": taskReducer }),
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })

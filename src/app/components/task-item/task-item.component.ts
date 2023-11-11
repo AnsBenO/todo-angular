@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { TaskService } from "src/app/services/task.service";
+import { Store } from "@ngrx/store";
+import { taskActions } from "src/app/store/actions/task.actions";
 import { Task } from "src/app/types/task.interface";
 
 @Component({
@@ -8,20 +9,31 @@ import { Task } from "src/app/types/task.interface";
     templateUrl: "./task-item.component.html",
     styleUrls: ["./task-item.component.css"],
 })
-export class TaskItemComponent {
+export class TaskItemComponent implements OnInit {
     @Input() task!: Task;
-    isDeleted: boolean = false;
-
     editMode: boolean = false;
+    newDone!: boolean;
+    newTitle: string = "";
     xMark = faXmark;
-    constructor(private taskService: TaskService) {}
+    constructor(private store: Store) {}
+    ngOnInit(): void {
+        this.newDone = this.task.done;
+        this.newTitle = this.task.title;
+    }
 
     updateTask() {
-        this.taskService.updateTask(this.task);
+        const updatedTask: Partial<Task> = {
+            title: this.newTitle,
+            done: this.newDone,
+        };
+        this.store.dispatch(
+            taskActions.updateTask({ updatedTask: updatedTask })
+        );
+        console.log({ updatedTask: updatedTask });
+        this.editMode = false;
     }
     onDelete(id: number) {
-        this.taskService.removeTask(id);
-        this.isDeleted = true;
+        this.store.dispatch(taskActions.removeTask({ taskId: id }));
     }
     setEditMode(newValue: boolean) {
         this.editMode = newValue;

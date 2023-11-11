@@ -2,7 +2,7 @@ form.taskInputForm {
     display: flex;
     justify-content: center;
     border-radius: 15px;
-    background-color: var(--item-bg);
+    background-color: var(--item-bg-lighter);
     max-width: 600px;
     margin: auto;
     height: 50px;
@@ -29,7 +29,7 @@ button.addBtn {
     width: 50px;
     border: 1px solid transparent;
     font-size: 15px;
-    background-color: var(--item-bg);
+    background-color: var(--item-bg-lighter);
     color: var(--item-color);
     border-radius: 15px 0 0 15px;
     transition: background-color 0.3s ease;

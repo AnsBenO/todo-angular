@@ -1,4 +1,9 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { take } from "rxjs";
+import { taskActions } from "src/app/store/actions/task.actions";
+import { selectAllTasks } from "src/app/store/selectors/task.selectors";
+import { Task } from "src/app/types/task.interface";
 
 @Component({
     selector: "app-task-input-form",
@@ -6,9 +11,19 @@ import { Component, EventEmitter, Output } from "@angular/core";
     styleUrls: ["./task-input-form.component.css"],
 })
 export class TaskInputFormComponent {
-    @Output() submittedTask = new EventEmitter<string>();
-
+    constructor(private store: Store) {}
     handleSubmit(taskInput: string) {
-        taskInput && this.submittedTask.emit(taskInput);
+        this.store
+            .select(selectAllTasks)
+            .pipe(take(1))
+            .subscribe(tasks => {
+                const maxId = Math.max(...tasks.map(task => task.id));
+                const newTask: Task = {
+                    id: maxId + 1,
+                    title: taskInput,
+                    done: false,
+                };
+                this.store.dispatch(taskActions.addTask({ task: newTask }));
+            });
     }
 }
