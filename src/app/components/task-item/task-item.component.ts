@@ -22,7 +22,8 @@ export class TaskItemComponent implements OnInit {
     }
 
     updateTask() {
-        const updatedTask: Partial<Task> = {
+        const updatedTask: Task = {
+            id: this.task.id,
             title: this.newTitle,
             done: this.newDone,
         };
@@ -31,6 +32,7 @@ export class TaskItemComponent implements OnInit {
         );
         this.editMode = false;
     }
+
     onDelete(id: number) {
         this.store.dispatch(taskActions.removeTask({ taskId: id }));
     }

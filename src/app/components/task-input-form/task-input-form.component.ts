@@ -16,14 +16,22 @@ export class TaskInputFormComponent {
         this.store
             .select(selectAllTasks)
             .pipe(take(1))
-            .subscribe(tasks => {
-                const maxId = Math.max(...tasks.map(task => task.id));
-                const newTask: Task = {
-                    id: maxId + 1,
-                    title: taskInput,
-                    done: false,
-                };
-                this.store.dispatch(taskActions.addTask({ task: newTask }));
+            .subscribe({
+                next: tasks => {
+                    const maxId =
+                        tasks.length > 0
+                            ? Math.max(...tasks.map(task => task.id))
+                            : 0;
+                    const newTask: Task = {
+                        id: maxId + 1,
+                        title: taskInput,
+                        done: false,
+                    };
+                    this.store.dispatch(taskActions.addTask({ task: newTask }));
+                },
+                error: error => {
+                    console.error("An error occurred:", error);
+                },
             });
     }
 }

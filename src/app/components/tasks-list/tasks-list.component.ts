@@ -27,4 +27,7 @@ export class TasksListComponent implements OnDestroy, OnInit {
         this.destroy$.next();
         this.destroy$.complete();
     }
+    trackByTaskId(_index: number, task: Task): number {
+        return task.id;
+    }
 }

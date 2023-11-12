@@ -1,3 +1,8 @@
-h3 {
+h3.date {
     color: var(--item-color);
+}
+
+h1.counter {
+    color: var(--item-color);
+    text-align: center;
 }

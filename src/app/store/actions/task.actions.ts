@@ -8,7 +8,7 @@ const removeTask = createAction(
 );
 const updateTask = createAction(
     "[Task] UpdateTask",
-    props<{ updatedTask: Partial<Task> }>()
+    props<{ updatedTask: Task }>()
 );
 
 export const taskActions = { addTask, removeTask, updateTask };

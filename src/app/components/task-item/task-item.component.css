@@ -79,11 +79,11 @@ form.editForm {
     height: 60%;
     margin: auto 0;
     background: none;
+    max-width: 60%;
 }
 
 input.editInput {
     display: block;
-
     height: 100%;
     width: 100%;
     color: var(--item-color);
@@ -91,7 +91,7 @@ input.editInput {
     border: 1px solid transparent;
     font-size: 18px;
     padding-left: 15px;
-    border: 1px solid var(--item-color);
+    border: 1px solid var(--item-hover);
     border-radius: 10px;
 }
 
