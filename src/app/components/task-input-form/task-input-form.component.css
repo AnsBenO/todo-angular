@@ -25,10 +25,10 @@ input.taskInput:hover {
 }
 
 button.addBtn {
-    padding: 15px;
+    padding: 5px 15px;
     width: 50px;
     border: 1px solid transparent;
-    font-size: 15px;
+    font-size: 25px;
     background-color: var(--item-bg-lighter);
     color: var(--item-color);
     border-radius: 15px 0 0 15px;
