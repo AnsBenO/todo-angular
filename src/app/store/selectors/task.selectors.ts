@@ -1,7 +1,6 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { AppState } from "../app.state";
 
-// Selectors to extract specific pieces of data
 export const selectAllTasks = createSelector(
     createFeatureSelector("tasks"),
     (state: AppState) => state.tasks
